@@ -44,6 +44,7 @@ void reset()
   red_on = 0;
   green_on = 0;
   dimming = 0;
+  buzzer_set_period(0);
   led_update();
 }
 
@@ -77,28 +78,29 @@ void state_advance(char state)		/* alternate between toggling red & green */
   if (state == '0') {
     //reset()
     reset_assembly();
-    //set_dim();
   }
   else if (state == '1') {
     red_on = 0;
     green_on = 1;
     led_changed = 1;
-    //dimming = 1;
-    //set_dim();
+    buzzer_set_period(3000);
     led_update();
   }
   else if (state == '2') {
     red_on = 1;
     green_on = 0;
     led_changed = 1;
+    buzzer_set_period(1500);
     led_update();
   }
   else if(state == '3') {
     red_on = 1;
     green_on = 1;
     led_changed = 1;
+    //dimming = 1;
+    buzzer_set_period(500);
+    //set_dim();                        /* set_dim() does not work as intended */
     led_update();
   }
   led_update();
 }
-

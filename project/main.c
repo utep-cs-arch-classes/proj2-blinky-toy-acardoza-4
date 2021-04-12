@@ -10,6 +10,7 @@ int main(void) {
   configureClocks(); /* setup master oscillator, CPU & peripheral clocks */
   switch_init();
   led_init();
+  buzzer_init();
   reset_assembly();
   enableWDTInterrupts();	/* enable periodic interrupt */
 
