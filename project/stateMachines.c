@@ -41,11 +41,12 @@ void reset()
 {
   red_on = 0;
   green_on = 0;
+  dimming = 0;
   led_update();
 }
 
 void set_dim(){
-  while(dimming) {
+  while(dimming == 1) {
     unsigned int i,j;
     for( i = 1; i < 1200; i++) {
       green_on = 1;
@@ -66,29 +67,30 @@ void set_dim(){
 	__delay_cycles(1);
       }
       
-    }
-
-    
+    }    
   }
 }
 void state_advance(char state)		/* alternate between toggling red & green */
 {
-  if (state == 0) {
-    set_dim();
+  if (state == '0') {
+    reset();
+    //set_dim();
   }
-  else if (state == 1) {
+  else if (state == '1') {
+    red_on = 0;
+    green_on = 1;
+    led_changed = 1;
+    //dimming = 1;
+    //set_dim();
+    led_update();
+  }
+  else if (state == '2') {
     red_on = 1;
     green_on = 0;
     led_changed = 1;
     led_update();
   }
-  else if (state == 2) {
-    red_on = 0;
-    green_on = 1;
-    led_changed = 1;
-    led_update();
-  }
-  else if(state == 3) {
+  else if(state == '3') {
     red_on = 1;
     green_on = 1;
     led_changed = 1;

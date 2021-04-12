@@ -3,6 +3,7 @@
 #include "libTimer.h"
 #include "led.h"
 #include "switches.h"
+#include "stateMachines.h"
 
 int main(void) {
   configureClocks(); /* setup master oscillator, CPU & peripheral clocks */
