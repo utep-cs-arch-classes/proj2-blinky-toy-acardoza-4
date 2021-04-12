@@ -8,14 +8,14 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 
-all: main.elf 
+all: counter.elf 
 
 #additional rules for files
-main.elf: ${COMMON_OBJECTS}  main.o stateMachines.o led.o switches.o wdInterruptHandler.o reset_assembly.o buzzer.o ../demos/lib/libTimer.a
+counter.elf: ${COMMON_OBJECTS}  counter.o stateMachines.o led.o switches.o wdInterruptHandler.o reset_assembly.o buzzer.o ../demos/lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-load: main.elf
-	msp430loader.sh main.elf
+load: counter.elf
+	msp430loader.sh counter.elf
 
 clean:
 	rm -f *.o *.elf
