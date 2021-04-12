@@ -2,6 +2,8 @@
 #include "stateMachines.h"
 #include "led.h"
 #include "switches.h"
+#include "buzzer.h"
+
 /*
 char toggle_red()		/* toggle red led 
 {
