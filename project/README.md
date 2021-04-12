@@ -18,8 +18,7 @@ under the **/project** directory. This will remove excess files.
 
 ### S1
 
-Button **S1** is a reset button that will turn off the green and red LED
-lights and stop any tone that is currently playing.
+Button **S1** is a **reset** button that will **turn off the green and red LEDs** and stop any tone that is currently playing.
 
 ### S2
 
@@ -35,4 +34,4 @@ on** and the red LED off; it will also play a **medium-range** tone.
 ### S4
 
 Button **S4** will display the binary number *3* by turning on both the **red
-and green LEDs on** ; it will also play **high** tone.
+and green LEDs**; it will also play **high** tone.
