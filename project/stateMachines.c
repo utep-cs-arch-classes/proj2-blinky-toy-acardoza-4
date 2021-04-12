@@ -2,8 +2,8 @@
 #include "stateMachines.h"
 #include "led.h"
 #include "switches.h"
-
-char toggle_red()		/* toggle red led */
+/*
+char toggle_red()		/* toggle red led 
 {
   static char state = 0;
 
@@ -20,7 +20,7 @@ char toggle_red()		/* toggle red led */
   return 1;			
 }
 
-char toggle_green()	/* toggle green led */
+char toggle_green()	/* toggle green led 
 {
   char state = 0;
 
@@ -36,23 +36,64 @@ char toggle_green()	/* toggle green led */
   }
   return 1;
 }
-
-void reset() {
+*/
+void reset()
+{
   red_on = 0;
   green_on = 0;
   led_update();
 }
+
+void set_dim(){
+  while(dimming) {
+    unsigned int i,j;
+    for( i = 1; i < 1200; i++) {
+      green_on = 1;
+      red_on = 0;
+      led_changed = 1;
+      led_update();
+
+      for(j = i; j > 0; j--) {
+	__delay_cycles(1);
+      }
+
+      green_on = 0;
+      red_on = 1;
+      led_changed = 1;
+      led_update();
+
+      for(j = (1200 - i); j > 0; j--) {
+	__delay_cycles(1);
+      }
+      
+    }
+
+    
+  }
+}
 void state_advance(char state)		/* alternate between toggling red & green */
 {
-  char changed = 0;
-  switch (state) {
-  case 0: changed = 0; reset(); break;
-  case 1: changed = toggle_red(); break;
-  case 2: changed = toggle_red(); toggle_green(); break;
-  case 3: changed = toggle_red(); break;
+  if (state == 0) {
+    set_dim();
   }
-
-  led_changed = changed;
+  else if (state == 1) {
+    red_on = 1;
+    green_on = 0;
+    led_changed = 1;
+    led_update();
+  }
+  else if (state == 2) {
+    red_on = 0;
+    green_on = 1;
+    led_changed = 1;
+    led_update();
+  }
+  else if(state == 3) {
+    red_on = 1;
+    green_on = 1;
+    led_changed = 1;
+    led_update();
+  }
   led_update();
 }
 
