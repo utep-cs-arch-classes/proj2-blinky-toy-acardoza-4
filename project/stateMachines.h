@@ -6,5 +6,6 @@
 void reset();
 void set_dim();
 void state_advance(char state);
+void reset_assembly();
 
 #endif // included

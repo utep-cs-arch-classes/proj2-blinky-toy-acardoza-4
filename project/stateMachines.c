@@ -73,7 +73,8 @@ void set_dim(){
 void state_advance(char state)		/* alternate between toggling red & green */
 {
   if (state == '0') {
-    reset();
+    //reset()
+    reset_assembly();
     //set_dim();
   }
   else if (state == '1') {
