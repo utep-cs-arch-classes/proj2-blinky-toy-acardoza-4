@@ -1,25 +1,37 @@
-# Lab 2: Blinky-Buzzy Toy
+# Lab 2: Counter
 
-For your second project, your task is to use the MSP430 Microcontroller and your creativity to design a toy. Each MSP430 board is equipped with buttons, LED's, a speaker, and an LED screen. Utilizing these features and your knowledge of I/O, develop a program to turn the board into a toy.
+Counter is a basic program that can be loaded onto an **msp430**. It allows
+the use of the four buttons on the board (S1, S2, S3, S4) to control the
+msp430 through four different states.
 
-This toy should at minimum:
+## How To:
 
-* generate sounds,
-* dynamically change the LEDs that are illuminated, both brighly and dimmly,
-* implement a state machine to maintain the state of the toy,
-* and use the four buttons on the expansion board (P2.0-3) to transition the state machine.
+### Compile/Run:
+To compile and run Counter, go into the **/project** directory and enter
+"*make load*" in the terminal with the msp430 connected to your pc. This will
+load the program onto the board, ready for you to try it out!
+### Clean:
+To clean after Counter has been used, enter "*make clean*" on the terminal
+under the **/project** directory. This will remove excess files.
 
-**Furthermore, at least one of the functions to transition the state machine must be written by you in assembly language.**
+## Functionality:
 
-## Getting Started 
+### S1
 
-Inside this repository you will find two directories:
-1. The 'demos' directory contains sample programs for you to review and learn from. These example programs are a great starting point in understanding how to program the MSP430 microcontroller. See the readme in the demo directory on how to compile and run the demo programs.
-2. The 'project' directory should contain the source code for your toy.
+Button **S1** is a **reset** button that will **turn off the green and red LEDs** and stop any tone that is currently playing.
 
-## What Should Be In Your Repo
+### S2
 
-Your project will be graded on the following items:
-* Source code for your toy (only .c, .s and .h files).
-* A README containing a description of your toy, how to compile it, how to run it, and how to use it.
-* A Makefile with appropriate rules to build and clean your toy.
+Button **S2** will display the binary number *1* by turning the **red LED on**
+and the green LED off; it will also play a **low** tone.
+
+### S3
+
+Button **S3** will display the binary number *2* by turning the **green LED
+on** and the red LED off; it will also play a **medium-range** tone.
+
+
+### S4
+
+Button **S4** will display the binary number *3* by turning on both the **red
+and green LEDs**; it will also play **high** tone.
